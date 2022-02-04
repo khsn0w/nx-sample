@@ -1,0 +1,52 @@
+{
+  "root": "packages/configurator-bff",
+  "sourceRoot": "packages/configurator-bff/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/configurator-bff",
+        "main": "packages/configurator-bff/src/main.ts",
+        "tsConfig": "packages/configurator-bff/tsconfig.app.json",
+        "assets": ["packages/configurator-bff/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "packages/configurator-bff/src/environments/environment.ts",
+              "with": "packages/configurator-bff/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "configurator-bff:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/configurator-bff/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/configurator-bff"],
+      "options": {
+        "jestConfig": "packages/configurator-bff/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
