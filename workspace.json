@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "configurator-bff": "packages/configurator-bff"
+    "configurator-bff": "packages/configurator-bff",
+    "configurator-common": "packages/configurator-common"
   }
 }

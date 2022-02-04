@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-tutorial/configurator-common": [
+        "packages/configurator-common/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
