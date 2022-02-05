@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
+import {CalculatorService} from "./services/calculator.service";
 
 @Module({
   controllers: [],
-  providers: [],
-  exports: [],
+  providers: [CalculatorService],
+  exports: [CalculatorService],
 })
 export class ConfiguratorCommonModule {}

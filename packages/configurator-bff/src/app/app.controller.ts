@@ -1,13 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
-
-import { AppService } from './app.service';
+import {Body, Controller, Get, Post} from '@nestjs/common';
+import {CalculationPayload} from "@nx-tutorial/configurator-common";
+import {CalculatorService} from "../../../configurator-common/src/lib/services/calculator.service";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly calculatorService: CalculatorService) {}
 
   @Get()
-  getData() {
-    return this.appService.getData();
+  status() {
+    return {}
+  }
+  @Post('plus')
+  plus(@Body() payload: CalculationPayload) {
+    const {firstOperand, secondOperand} = payload;
+    return this.calculatorService.plus(firstOperand, secondOperand);
   }
 }
