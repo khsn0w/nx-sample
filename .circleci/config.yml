@@ -2,25 +2,24 @@ version: '2.1'
 orbs:
   nx: nrwl/nx@1.1.0
 jobs:
-  build:
+  main:
     docker:
       - image: 'cimg/node:14.17-browsers'
     steps:
       - checkout
-      - run:
-          command: yarn install --frozen-lockfile
-          name: Install dependencies
+      - run: npm install
       - nx/set-shas
-      - run:
-          command: >-
-            yarn nx affected --target=build --base=$NX_BASE --parallel
-            --max-parallel=3
-          name: Run Builds
-      - run:
-          command: >-
-            yarn nx affected --target=test --base=$NX_BASE --parallel
-            --max-parallel=2
-          name: Run Unit Tests in parallel
+      - run: npx nx affected --base=$NX_BASE --target=build --parallel --max-parallel=3
+      - run: npx nx affected --base=$NX_BASE --target=test --parallel --max-parallel=2
+  pr:
+    docker:
+      - image: 'cimg/node:14.17-browsers'
+    steps:
+      - checkout
+      - run: npm install
+      - nx/set-shas
+      - run: npx nx affected --base=$NX_BASE --target=build --parallel --max-parallel=3
+      - run: npx nx affected --base=$NX_BASE --target=test --parallel --max-parallel=2
 workflows:
   build:
     jobs:
