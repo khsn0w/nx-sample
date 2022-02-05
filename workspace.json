@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "calculator-ui": "packages/calculator-ui",
+    "calculator-ui-e2e": "packages/calculator-ui-e2e",
     "configurator-bff": "packages/configurator-bff",
     "configurator-common": "packages/configurator-common"
   }

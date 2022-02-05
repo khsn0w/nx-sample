@@ -1,0 +1,28 @@
+{
+  "root": "packages/calculator-ui-e2e",
+  "sourceRoot": "packages/calculator-ui-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/calculator-ui-e2e/cypress.json",
+        "devServerTarget": "calculator-ui:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "calculator-ui:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/calculator-ui-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["calculator-ui"]
+}
