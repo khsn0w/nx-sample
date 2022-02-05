@@ -22,7 +22,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - main:
+      - build:
           filters:
             branches:
               only: main
